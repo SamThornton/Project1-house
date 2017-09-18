@@ -6,15 +6,23 @@
  *
  * This class was written as an early example for teaching Java with BlueJ.
  * 
- * @author  Michael Kšlling and David J. Barnes
- * @version 2011.07.31
+ * The picture has been created as part of CISY242 at RVCC.
+ * It shows a man and his giant robot companion. 
+ * 
+ * @author   Sam Thornton
+ * @version  2017.09.18
  */
 public class Picture
 {
-    private Square wall;
-    private Square window;
-    private Triangle roof;
-    private Circle sun;
+    private Square body;
+    private Square head;
+    private Triangle leftLeg;
+    private Triangle rightLeg;
+    private Circle leftEye;
+    private Circle rightEye;
+    private Triangle leftArm;
+    private Triangle rightArm;
+    private Person man;
 
     /**
      * Constructor for objects of class Picture
@@ -29,31 +37,60 @@ public class Picture
      */
     public void draw()
     {
-        wall = new Square();
-        wall.moveHorizontal(-140);
-        wall.moveVertical(20);
-        wall.changeSize(120);
-        wall.makeVisible();
+        head = new Square();
+        head.changeColor("black");
+        head.moveHorizontal(-125);
+        head.moveVertical(-65);
+        head.changeSize(35);
+        head.makeVisible();
+
+        leftLeg = new Triangle();
+        leftLeg.moveHorizontal(-60);
+        leftLeg.moveVertical(60);
+        leftLeg.makeVisible();
         
-        window = new Square();
-        window.changeColor("black");
-        window.moveHorizontal(-120);
-        window.moveVertical(40);
-        window.changeSize(40);
-        window.makeVisible();
+        rightLeg = new Triangle();
+        rightLeg.moveHorizontal(40);
+        rightLeg.moveVertical(60);
+        rightLeg.makeVisible();
+        
+        rightArm = new Triangle();
+        rightArm.moveHorizontal(52);
+        rightArm.moveVertical(-40);
+        rightArm.changeSize(100, 20);
+        rightArm.makeVisible();
+        
+        leftArm = new Triangle();
+        leftArm.moveHorizontal(-74);
+        leftArm.moveVertical(-40);
+        leftArm.changeSize(100, 20);
+        leftArm.makeVisible();
+        
+        body = new Square();
+        body.moveHorizontal(-170);
+        body.moveVertical(-30);
+        body.changeSize(120);
+        body.makeVisible();
 
-        roof = new Triangle();  
-        roof.changeSize(60, 180);
-        roof.moveHorizontal(20);
-        roof.moveVertical(-60);
-        roof.makeVisible();
-
-        sun = new Circle();
-        sun.changeColor("yellow");
-        sun.moveHorizontal(100);
-        sun.moveVertical(-40);
-        sun.changeSize(80);
-        sun.makeVisible();
+        leftEye = new Circle();
+        leftEye.changeColor("yellow");
+        leftEye.moveHorizontal(-40);
+        leftEye.moveVertical(-33);
+        leftEye.changeSize(8);
+        leftEye.makeVisible();
+        
+        rightEye = new Circle();
+        rightEye.changeColor("yellow");
+        rightEye.moveHorizontal(-25);
+        rightEye.moveVertical(-33);
+        rightEye.changeSize(8);
+        rightEye.makeVisible();
+        
+        man = new Person();
+        man.changeColor("blue");
+        man.moveVertical(40);
+        
+        man.makeVisible();
     }
 
     /**
@@ -61,12 +98,17 @@ public class Picture
      */
     public void setBlackAndWhite()
     {
-        if (wall != null)   // only if it's painted already...
+        if (body != null)   // only if it's painted already...
         {
-            wall.changeColor("black");
-            window.changeColor("white");
-            roof.changeColor("black");
-            sun.changeColor("black");
+            body.changeColor("black");
+            head.changeColor("black");
+            leftLeg.changeColor("black");
+            rightLeg.changeColor("black");
+            leftArm.changeColor("black");
+            rightArm.changeColor("black");
+            leftEye.changeColor("white");
+            rightEye.changeColor("white");
+            man.changeColor("black");
         }
     }
 
@@ -75,12 +117,17 @@ public class Picture
      */
     public void setColor()
     {
-        if (wall != null)   // only if it's painted already...
+        if (body != null)   // only if it's painted already...
         {
-            wall.changeColor("red");
-            window.changeColor("black");
-            roof.changeColor("green");
-            sun.changeColor("yellow");
+            head.changeColor("black");
+            leftLeg.changeColor("green");
+            rightLeg.changeColor("green");
+            leftArm.changeColor("green");
+            rightArm.changeColor("green");
+            body.changeColor("red");
+            leftEye.changeColor("yellow");
+            rightEye.changeColor("yellow");
+            man.changeColor("blue");
         }
     }
 }
